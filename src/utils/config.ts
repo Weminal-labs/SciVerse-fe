@@ -15,16 +15,15 @@ import { arbitrumStylus } from "@/utils/arbitrumStylus"
 
 const { wallets } = getDefaultWallets()
 
-export const WALLETCONNECT_PROJECT_ID =
-  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? ""
-if (!WALLETCONNECT_PROJECT_ID) {
-  console.warn(
-    "You need to provide a NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID env variable"
-  )
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID
+
+if (!projectId) {
+  throw new Error('NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID is not defined in .env file')
 }
+
 export const config = getDefaultConfig({
-  appName: "RainbowKit demo",
-  projectId: WALLETCONNECT_PROJECT_ID,
+  appName: process.env.NEXT_PUBLIC_APP_NAME || "SciVerse",
+  projectId,
   wallets: [
     ...wallets,
     {
