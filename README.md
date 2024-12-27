@@ -1,113 +1,46 @@
-# Arbitrum Starter Kit
+## 🌌 SCIVERSE DOCUMENTATION
 
-Welcome to the Arbitrum Starter Kit! This starter kit provides you with a solid foundation for building decentralized applications (dApps) on the Arbitrum network. It comes pre-configured with Next.js, Wagmi v2, Viem, RainbowKit, TypeScript, Tailwind CSS, and Shadcn, enabling you to quickly start developing your dApp.
+![SciVerse](./resources-doc/sciverse.jpg)
 
-## Getting Started
+SciVerse is a decentralized platform revolutionizing the way research is conducted, funded, and published. Built on blockchain, it integrates key elements of decentralized science (DeSci) to create an efficient and transparent ecosystem for researchers, reviewers, and investors. 🧑‍🔬👨‍🔧👨‍💼
 
-To get started with the Arbitrum Starter Kit, follow these steps:
+### 🌟 Core Features
 
-1. Clone the repository or click on the Use this template button:
+#### 💰 Token Ecosystem ($DSCI):
+- Governance token for platform operations.
+- Enables staking for roles and earning rewards.
 
-   ```
-   https://github.com/HAPPYS1NGH/arbitrum-starter-kit
-   ```
+#### 🎭 Role-Based Staking:
+- Stake $DSCI tokens to access platform roles:
+  - 🧑‍🔬 Researcher: Min 1,000 DSCI.
+  - 👨‍🔧 Reviewer: Min 5,000 DSCI.
+  - 👨‍💼 Investor: Min 10,000 DSCI.
+- Role-based rewards for participation and contributions.
 
-2. Navigate to the project directory:
+#### 🏆 Membership NFTs:
+- Dynamic role assignment and profile tracking.
+- Proof of expertise and contributions for Researchers, Reviewers, and Investors.
 
-   ```
-   cd arbitrum-starter-kit
-   ```
+#### 🏛️ Research DAOs:
+- Decentralized governance for funding and managing research projects.
+- Categories include health tech, data collection, and infrastructure.
 
-3. Create a `.env` or `.env.local` file in the root directory and obtain the WalletConnect project ID from [WalletConnect](https://cloud.walletconnect.com/). Add the following line to your `.env` or `.env.local` file:
+#### 📚 Decentralized Publication & IP Management:
+- Blockchain-based IP protection.
+- Options for open-access or paid-access publishing.
 
-   ```
-   WALLET_CONNECT_PROJECT_ID=<your_wallet_connect_project_id>
-   ```
+### 🤖 Smart Contracts
+- **DeSciToken.sol**: Handles token economy and staking logic.
+- **MembershipNFT.sol**: Manages roles and access control.
+- **MetadataRegistry.sol**: Tracks publications and IP ownership.
+- **DeSciHub.sol**: Coordinates cross-contract functionality.
 
-4. Install dependencies:
+### 🚀 How to Get Started
+- **Stake Tokens**: Stake $DSCI to unlock platform features.
+- **Join a DAO**: Collaborate with the community on research projects.
+- **Publish Research**: Use the decentralized publication system to share findings.
 
-   ```
-   npm install
-   ```
-
-   or
-
-   ```
-   yarn install
-   ```
-
-5. Start the development server:
-
-   ```
-   npm run dev
-   ```
-
-   or
-
-   ```
-   yarn dev
-   ```
-
-6. Open your web browser and navigate to `http://localhost:3000` to view the application.
-
-## Interacting with Contracts
-
-This starter kit provides hooks from Wagmi v2 for interacting with smart contracts on the Arbitrum network. You can use these hooks to read and write data to contracts.
-
-## Directory Structure
-
-The project follows a standard directory structure for a Next.js application. Here's an overview of the directory structure:
-
-```
-├── README.md
-├── components.json
-├── next-env.d.ts
-├── next.config.js
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── public
-│   ├── arbitrum.svg
-├── src
-│   ├── app
-│   │   ├── favicon.ico
-│   │   ├── globals.css
-│   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   ├── read
-│   │   │   └── page.tsx
-│   │   └── write
-│   │       └── page.tsx
-│   ├── components
-│   │   ├── shared
-│   │   │   └── Navbar.tsx
-│   │   └── ui
-│   │       ├── button.tsx
-│   │       ├── input.tsx
-│   │       └── sonner.tsx
-│   ├── containers
-│   │   ├── home
-│   │   │   └── Profile.tsx
-│   │   ├── read
-│   │   │   └── ReadContract.tsx
-│   │   └── write
-│   │       └── WriteContract.tsx
-│   ├── lib
-│   │   └── utils.ts
-│   ├── providers
-│   │   ├── Layout.tsx
-│   │   └── Web3Provider.tsx
-│   └── utils
-│       └── config.ts
-├── tailwind.config.ts
-└── tsconfig.json
-```
-
-## Support
-
-If you encounter any issues or have questions regarding the Arbitrum Starter Kit, please don't hesitate to reach out to us:
-
-- Twitter: https://twitter.com/happys1ngh
-- GitHub Issues: [arbitrum-starter-kit](https://github.com/HAPPYS1NGH/arbitrum-starter-kit/issues)
-
-Happy coding! 🚀
+### 🗺️ Roadmap
+- **Milestone 1**: Infrastructure setup, token launch, and basic DAO structure.
+- **Milestone 2**: Research proposal system and publication platform.
+- **Milestone 3**: IP marketplace and analytics tools.
