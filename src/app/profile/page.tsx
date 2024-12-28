@@ -5,6 +5,8 @@ import StakeAndRewards from '@/components/profile/StakeAndRewards'
 import DAOMemberships from '@/components/profile/DAOMemberships'
 import UserActivity from '@/components/profile/UserActivity'
 import RoleChangeHistory from '@/components/profile/RoleChangeHistory'
+import StakingInfo from '@/components/profile/StakingInfo'
+import { StakeForm } from '@/components/profile/StakeForm'
 
 export default function ProfilePage() {
   // Mock data - in a real app, this would come from your API
@@ -48,7 +50,8 @@ export default function ProfilePage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-8">
           <RoleInformation user={userProfile} />
-          <StakeAndRewards stake={userProfile.stake} rewards={userProfile.rewards} />
+          <StakeForm />
+          <StakingInfo />
           <DAOMemberships memberships={userProfile.daoMemberships} />
         </div>
         <div className="space-y-8">
