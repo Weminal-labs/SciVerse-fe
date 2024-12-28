@@ -2,33 +2,24 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function InvestorDashboard() {
   return (
-    <div className="grid gap-4 md:grid-cols-2">
-      <Card>
-        <CardHeader>
-          <CardTitle>Investment Portfolio</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {/* Add investment portfolio summary */}
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>ROI Tracking</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {/* Add ROI metrics */}
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Funding Opportunities</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {/* Add recommended proposals for funding */}
-        </CardContent>
-      </Card>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>Investor Dashboard</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div>
+          <h3 className="text-lg font-semibold">Funding Opportunities</h3>
+          {/* Funding opportunities list */}
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold">Investment Portfolio</h3>
+          {/* Portfolio component */}
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold">ROI Tracking</h3>
+          {/* ROI tracking component */}
+        </div>
+      </CardContent>
+    </Card>
   )
 } 

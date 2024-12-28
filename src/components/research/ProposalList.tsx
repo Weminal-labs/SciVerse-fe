@@ -23,9 +23,10 @@ interface Proposal {
 
 interface ProposalListProps {
   initialProposals: Proposal[]
+  userRole: 'researcher' | 'reviewer' | 'investor' | null
 }
 
-export default function ProposalList({ initialProposals }: ProposalListProps) {
+export default function ProposalList({ initialProposals, userRole }: ProposalListProps) {
   const [proposals, setProposals] = useState(initialProposals)
   const [selectedProposal, setSelectedProposal] = useState<Proposal | null>(null)
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
@@ -43,6 +44,52 @@ export default function ProposalList({ initialProposals }: ProposalListProps) {
 
   const handleFundProposal = (fundedProposal: Proposal) => {
     setProposals(proposals.map(p => p.id === fundedProposal.id ? fundedProposal : p))
+  }
+
+  const renderActionButtons = (proposal: Proposal) => {
+    switch (userRole) {
+      case 'researcher':
+        return (
+          <>
+            <Button variant="outline" size="sm" onClick={() => handleViewProposal(proposal)}>
+              View
+            </Button>
+            {proposal.researcher === 'Current User' && (
+              <Button variant="outline" size="sm" onClick={() => handleEditProposal(proposal)}>
+                Edit
+              </Button>
+            )}
+          </>
+        )
+      case 'reviewer':
+        return (
+          <>
+            <Button variant="outline" size="sm" onClick={() => handleViewProposal(proposal)}>
+              View
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => handleReviewProposal(proposal)}>
+              Review
+            </Button>
+          </>
+        )
+      case 'investor':
+        return (
+          <>
+            <Button variant="outline" size="sm" onClick={() => handleViewProposal(proposal)}>
+              View
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => handleFundProposal(proposal)}>
+              Fund
+            </Button>
+          </>
+        )
+      default:
+        return (
+          <Button variant="outline" size="sm" onClick={() => handleViewProposal(proposal)}>
+            View
+          </Button>
+        )
+    }
   }
 
   return (
@@ -80,24 +127,7 @@ export default function ProposalList({ initialProposals }: ProposalListProps) {
               <TableCell>{new Date(proposal.dueDate).toLocaleDateString()}</TableCell>
               <TableCell>
                 <div className="flex gap-2">
-                  <Button variant="outline" size="sm" onClick={() => {
-                    setSelectedProposal(proposal)
-                    setIsViewModalOpen(true)
-                  }}>
-                    View
-                  </Button>
-                  <Button variant="outline" size="sm" onClick={() => {
-                    setSelectedProposal(proposal)
-                    setIsReviewModalOpen(true)
-                  }}>
-                    Review
-                  </Button>
-                  <Button variant="outline" size="sm" onClick={() => {
-                    setSelectedProposal(proposal)
-                    setIsFundModalOpen(true)
-                  }}>
-                    Fund
-                  </Button>
+                  {renderActionButtons(proposal)}
                 </div>
               </TableCell>
             </TableRow>

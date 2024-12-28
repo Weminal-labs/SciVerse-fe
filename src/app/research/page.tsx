@@ -1,19 +1,16 @@
 "use client"
 
 import { useState } from 'react'
-import { useAccount } from 'wagmi'
 import ProposalList from '@/components/research/ProposalList'
 import FilterSearch from '@/components/research/FilterSearch'
+import { useRole } from '@/hooks/useRole'
 import ResearcherDashboard from '@/components/research/ResearcherDashboard'
 import ReviewerDashboard from '@/components/research/ReviewerDashboard'
 import InvestorDashboard from '@/components/research/InvestorDashboard'
-import { UserRole } from '@/types/research'
 
 export default function ResearchPage() {
-  const { isConnected } = useAccount()
-  // In a real app, this would come from your user context/auth system
-  const [userRole] = useState<UserRole>('Researcher')
-
+  const { role } = useRole()
+  
   // Mock data - in a real app, this would come from your API
   const initialProposals = [
     {
@@ -25,6 +22,10 @@ export default function ResearchPage() {
       currentFunding: 25000,
       dueDate: "2024-06-15",
       description: "Research on quantum entanglement and its applications in computing.",
+      milestones: [
+        { id: 1, title: "Literature Review", status: "Completed", dueDate: "2024-02-01" },
+        { id: 2, title: "Initial Experiments", status: "In Progress", dueDate: "2024-04-01" }
+      ]
     },
     {
       id: 2,
@@ -38,15 +39,6 @@ export default function ResearchPage() {
     },
   ]
 
-  if (!isConnected) {
-    return (
-      <div className="text-center py-10">
-        <h2 className="text-2xl font-bold mb-4">Connect Your Wallet</h2>
-        <p>Please connect your wallet to access the research platform.</p>
-      </div>
-    )
-  }
-
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -54,14 +46,14 @@ export default function ResearchPage() {
       </div>
 
       {/* Role-specific dashboard */}
-      {userRole === 'Researcher' && <ResearcherDashboard />}
-      {userRole === 'Reviewer' && <ReviewerDashboard />}
-      {userRole === 'Investor' && <InvestorDashboard />}
+      {role === 'researcher' && <ResearcherDashboard />}
+      {role === 'reviewer' && <ReviewerDashboard />}
+      {role === 'investor' && <InvestorDashboard />}
 
       <FilterSearch />
       <ProposalList 
-        initialProposals={initialProposals} 
-        userRole={userRole}
+        initialProposals={initialProposals}
+        userRole={role} 
       />
     </div>
   )
