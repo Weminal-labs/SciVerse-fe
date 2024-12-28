@@ -46,6 +46,16 @@ export default function ProposalList({ initialProposals, userRole }: ProposalLis
     setProposals(proposals.map(p => p.id === fundedProposal.id ? fundedProposal : p))
   }
 
+  const handleViewProposal = (proposal: Proposal) => {
+    setSelectedProposal(proposal)
+    setIsViewModalOpen(true)
+  }
+
+  const handleEditProposal = (proposal: Proposal) => {
+    setSelectedProposal(proposal)
+    // Add edit modal logic here
+  }
+
   const renderActionButtons = (proposal: Proposal) => {
     switch (userRole) {
       case 'researcher':
